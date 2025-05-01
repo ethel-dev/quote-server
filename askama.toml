@@ -1,0 +1,4 @@
+# This file configures Askama for the project, specifying the template directory.
+
+[askama]
+template_dir = "templates"

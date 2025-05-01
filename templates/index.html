@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Server</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    {% extends "base.html" %}
+
+    {% block content %}
+    <div class="quote-container">
+        <h1>Quote of the Day</h1>
+        <blockquote>
+            <p>{{ quote.text }}</p>
+            <footer>— {{ quote.author }}</footer>
+        </blockquote>
+    </div>
+    {% endblock %}
+</body>
+</html>

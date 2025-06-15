@@ -1,3 +1,5 @@
-/target
+target/
+db/
+secrets/
 .DS_Store
 ._.DS_Store

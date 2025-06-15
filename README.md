@@ -3,33 +3,52 @@
 
 ## Overview
 
-This project implements a basic server-side website using Axum and Askama to display a single quote. Basic templating is included and not much else.
+This project implements a basic server-side website using Axum, Askama and SQLite to serve quotes to the user. A basic Utopia-documented REST API is implemented for CRUD and has Swagger documentation.
 
 ## Setup Instructions
 
 To set up the project, follow these steps:
 
 1. Clone the repository:
-   ```sh
-   git clone <repository-url>
-   cd quote-server
-   ```
+```sh
+git clone <repository-url>
+cd quote-server
+```
 
 2. Build the project:
-   ```sh
-   cargo build
-   ```
+```sh
+cargo build
+```
 
 3. Run the application:
-   ```sh
-   cargo run
-   ```
+```sh
+cargo run
+```
 
 4. Open your web browser and navigate to `http://localhost:3000` to view the application.
 
 ## Usage
 
-The application will display a single quote or recipe on the main page. One can modify the content by updating the data structures in `src/models.rs` and the templates in the `templates` directory.
+You can add a quote by making a POST request to the `/quotes/` route.
+
+```sh
+curl -X POST http://localhost:3000/quotes \
+  -H "Content-Type: application/json" \
+  -d '{
+    "text": "The only thing we have to fear is fear itself.",
+    "author": "Franklin D. Roosevelt", 
+    "source": "Speech",
+    "tags": ["motivation", "determination"]
+  }'
+```
+
+Searching is also possible by making a GET request to the `/quotes/search` route with `tag` or `author` or just a search term.
+
+```sh
+curl "http://localhost:3000/quotes/search?author=Roosevelt"
+curl "http://localhost:3000/quotes/search?tag=motivation"
+curl "http://localhost:3000/quotes/search?search=determination"
+```
 
 ## License
 

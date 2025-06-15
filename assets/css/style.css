@@ -1,41 +1,82 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: serif;
     margin: 0;
-    padding: 0;
-}
-
-header {
-    background: #35424a;
-    color: #ffffff;
-    padding: 10px 0;
-    text-align: center;
+    padding: 20px;
+    line-height: 1.4;
 }
 
 h1 {
-    margin: 0;
+    font-weight: bold;
+    font-size: 150%;
 }
 
-.container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
+h2 {
+    font-weight: bold;
 }
 
-.quote {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 20px 0;
+.quotes-container {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-footer {
+.api-links {
+    margin-bottom: 20px;
+}
+
+.api-links a {
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+.api-links a:hover {
+    text-decoration: underline;
+}
+
+.quote-card {
+    border: 1px solid black;
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+.quote-card blockquote {
+    margin: 0 0 10px 0;
+}
+
+.quote-card blockquote p {
+    margin: 0 0 5px 0;
+}
+
+.quote-card blockquote footer {
+    text-align: right;
+    font-style: italic;
+    font-size: 90%;
+}
+
+.quote-card cite {
+    font-size: 85%;
+}
+
+.tags {
+    margin-top: 10px;
+}
+
+.tags .tag {
+    font-style: italic;
+    font-size: 75%;
+    margin-right: 10px;
+}
+
+.quote-id {
+    font-size: 75%;
+    text-align: right;
+    margin-top: 5px;
+}
+
+.no-quotes {
     text-align: center;
-    padding: 10px 0;
-    background: #35424a;
-    color: #ffffff;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+    font-style: italic;
+}
+
+.error {
+    color: #881111;
 }

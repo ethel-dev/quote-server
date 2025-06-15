@@ -1,22 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quote Server</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
-    {% extends "base.html" %}
+{% extends "base.html" %}
 
-    {% block content %}
-    <div class="quote-container">
-        <h1>Quote of the Day</h1>
-        <blockquote>
-            <p>{{ quote.text }}</p>
-            <footer>— {{ quote.author }}</footer>
-        </blockquote>
+{% block title %}Quote Server - Home{% endblock %}
+
+{% block content %}
+<div class="quotes-container">
+    <h2>Quotes Collection</h2>
+    
+    <div class="api-links">
+        <p>API Documentation: <a href="/swagger-ui/" target="_blank">Swagger UI</a></p>
+        <p>REST API: <a href="/quotes" target="_blank">View JSON</a></p>
     </div>
-    {% endblock %}
-</body>
-</html>
+
+    {% if quotes.is_empty() %}
+        <p class="no-quotes">No quotes available. Use the API to add some!</p>
+    {% else %}
+        <div class="quotes-grid">
+            {% for quote_with_tags in quotes %}
+                <div class="quote-card">
+                    <blockquote>
+                        <p>"{{ quote_with_tags.quote.text }}"</p>
+                        <footer>
+                            — {{ quote_with_tags.quote.author }}
+                            {% if !quote_with_tags.quote.source.is_empty() %}
+                                <cite>({{ quote_with_tags.quote.source }})</cite>
+                            {% endif %}
+                        </footer>
+                    </blockquote>
+                    {% if !quote_with_tags.tags.is_empty() %}
+                        <div class="tags">
+                            {% for tag in quote_with_tags.tags %}
+                                <span class="tag">{{ tag }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <div class="quote-id">ID: {{ quote_with_tags.quote.id }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

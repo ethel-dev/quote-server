@@ -20,6 +20,22 @@ cd quote-server
 cargo build
 ```
 
+3. Set up the database
+   - You will need to have SQLite installed on your system.
+   - Once you have SQLite installed, you can create the database and run migrations using `sqlx-cli`
+
+```sh
+# make db directory in root of project
+mkdir -p db
+
+# install sqlx-cli with SQLite support if you haven't already
+cargo install sqlx-cli --no-default-features --features sqlite
+
+# create the database and run migrations
+sqlx database create --database-url sqlite://db/quotes.db
+sqlx migrate run --database-url sqlite://db/quotes.db
+```
+
 3. Run the application:
 ```sh
 cargo run
